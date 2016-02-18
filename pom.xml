@@ -3,13 +3,13 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>hzg.wpn.tango</groupId>
+  <groupId>org.tango</groupId>
   <artifactId>camel-tango</artifactId>
   <packaging>bundle</packaging>
   <version>0.2-SNAPSHOT</version>
 
   <name>Camel Tango Component</name>
-  <url>http://www.hzg.de</url>
+    <url>http://www.tango-controls.org</url>
 
     <developers>
         <developer>
