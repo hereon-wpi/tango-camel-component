@@ -74,7 +74,7 @@ public class TangoEndpoint extends DefaultEndpoint {
         this.pipe = pipe;
     }
 
-    public boolean isPoll() {
+    public boolean getPoll() {
         return isPoll;
     }
 
