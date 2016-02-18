@@ -20,7 +20,7 @@ public class TangoEndpoint extends DefaultEndpoint {
     @UriParam @Metadata(required = "true")
     private String pipe;
     @UriParam
-    private boolean isPoll = false;
+    private boolean poll = false;
 
     private final TangoProxy proxy;
 
@@ -34,7 +34,7 @@ public class TangoEndpoint extends DefaultEndpoint {
     }
 
     public Consumer createConsumer(Processor processor) throws Exception {
-        if(isPoll)
+        if(poll)
             return new TangoPollConsumer(this, processor);
         else
             return new TangoEventConsumer(this, processor);
@@ -75,7 +75,7 @@ public class TangoEndpoint extends DefaultEndpoint {
     }
 
     public boolean getPoll() {
-        return isPoll;
+        return poll;
     }
 
     /**
@@ -84,6 +84,6 @@ public class TangoEndpoint extends DefaultEndpoint {
      * @param isPoll
      */
     public void setPoll(boolean isPoll) {
-        this.isPoll = isPoll;
+        this.poll = isPoll;
     }
 }
