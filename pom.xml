@@ -6,7 +6,7 @@
   <groupId>hzg.wpn.tango</groupId>
   <artifactId>camel-tango</artifactId>
   <packaging>bundle</packaging>
-  <version>0.1</version>
+  <version>0.2-SNAPSHOT</version>
 
   <name>Camel Tango Component</name>
   <url>http://www.hzg.de</url>
