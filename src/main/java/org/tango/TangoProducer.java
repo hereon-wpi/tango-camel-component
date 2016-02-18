@@ -1,6 +1,5 @@
-package hzg.wpn.tango;
+package org.tango;
 
-import fr.esrf.TangoApi.DeviceAttribute;
 import fr.esrf.TangoApi.DevicePipe;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;

@@ -11,10 +11,30 @@
   <name>Camel Tango Component</name>
   <url>http://www.hzg.de</url>
 
+    <developers>
+        <developer>
+            <id>ingvord</id>
+            <name>Igor Khokhriakov</name>
+            <email>tla-ingvord@yandex.ru</email>
+        </developer>
+    </developers>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
+
+    <scm>
+        <connection>scm:hg:https://bitbucket.org/Ingvord/${project.artifactId}</connection>
+        <developerConnection>scm:hg:ssh://hg@bitbucket.org/Ingvord/${project.artifactId}</developerConnection>
+        <url>ssh://hg@bitbucket.org/Ingvord/${project.artifactId}</url>
+        <tag>${project.version}</tag>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-ingvord</id>
+            <url>https://api.bintray.com/maven/ingvord/maven/camel-tango/;publish=1</url> </repository> </distributionManagement>
 
   <dependencies>
     <dependency>
@@ -45,13 +65,8 @@
     <!-- logging -->
     <dependency>
       <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.7.12</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.12</version>
+      <version>1.7.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -125,12 +140,20 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Bundle-SymbolicName>hzg.wpn.tango.camel-tango</Bundle-SymbolicName>
+            <Bundle-SymbolicName>org.tango.camel-tango</Bundle-SymbolicName>
             <Export-Service>org.apache.camel.spi.ComponentResolver;component=tango</Export-Service>
           </instructions>
         </configuration>
       </plugin>
 
+        <plugin>
+            <artifactId>maven-release-plugin</artifactId>
+            <configuration>
+                <useReleaseProfile>false</useReleaseProfile>
+                <releaseProfiles>release</releaseProfiles>
+                <autoVersionSubmodules>true</autoVersionSubmodules>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
 

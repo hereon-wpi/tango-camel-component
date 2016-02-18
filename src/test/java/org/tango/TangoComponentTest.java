@@ -1,4 +1,4 @@
-package hzg.wpn.tango;
+package org.tango;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;

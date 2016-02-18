@@ -1,10 +1,9 @@
-package hzg.wpn.tango;
+package org.tango;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoApi.DevicePipe;
 import fr.esrf.TangoApi.events.ITangoPipeListener;
 import fr.esrf.TangoApi.events.TangoPipeEvent;
-import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.DefaultConsumer;

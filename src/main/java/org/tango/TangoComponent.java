@@ -1,6 +1,5 @@
-package hzg.wpn.tango;
+package org.tango;
 
-import java.net.URI;
 import java.util.Map;
 
 import org.apache.camel.CamelContext;
