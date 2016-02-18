@@ -13,12 +13,8 @@ import org.tango.client.ez.proxy.TangoProxy;
 /**
  * Represents a Tango endpoint.
  */
-@UriEndpoint(scheme = "tango", title = "Tango", syntax="tango:[attr|pipe]:tango://host:port/name?[attr|pipe]", consumerClass = TangoPollConsumer.class, label = "Tango")
+@UriEndpoint(scheme = "tango", title = "Tango", syntax="tango:name?[attr|pipe]", consumerClass = TangoPollConsumer.class, label = "Tango")
 public class TangoEndpoint extends DefaultEndpoint {
-    @UriPath @Metadata(required = "true")
-    private String host;
-    @UriPath @Metadata(required = "true")
-    private int port;
     @UriPath @Metadata(required = "true")
     private String name;
     @UriParam @Metadata(required = "true")
@@ -49,7 +45,9 @@ public class TangoEndpoint extends DefaultEndpoint {
     }
 
     /**
-     * Some description of this option, and what it does
+     * Tango device name, e.g. either tango://host:port/name or just name
+     *
+     * @param name
      */
     public void setName(String name) {
         this.name = name;
@@ -57,22 +55,6 @@ public class TangoEndpoint extends DefaultEndpoint {
 
     public String getName() {
         return name;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
     }
 
     public TangoProxy getProxy() {
@@ -83,6 +65,11 @@ public class TangoEndpoint extends DefaultEndpoint {
         return pipe;
     }
 
+    /**
+     * Pipe name to attach to
+     *
+     * @param pipe
+     */
     public void setPipe(String pipe) {
         this.pipe = pipe;
     }
@@ -91,6 +78,11 @@ public class TangoEndpoint extends DefaultEndpoint {
         return isPoll;
     }
 
+    /**
+     * Defines whether this Endpoint will create PollConsumers
+     *
+     * @param isPoll
+     */
     public void setPoll(boolean isPoll) {
         this.isPoll = isPoll;
     }
