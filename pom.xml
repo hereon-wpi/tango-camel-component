@@ -6,7 +6,7 @@
   <groupId>org.tango</groupId>
   <artifactId>camel-tango</artifactId>
   <packaging>bundle</packaging>
-  <version>0.4-SNAPSHOT</version>
+  <version>0.4</version>
 
   <name>Camel Tango Component</name>
     <url>http://www.tango-controls.org</url>
