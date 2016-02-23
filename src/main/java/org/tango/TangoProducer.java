@@ -1,6 +1,7 @@
 package org.tango;
 
 import fr.esrf.TangoApi.DevicePipe;
+import fr.esrf.TangoApi.PipeBlob;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
 import org.slf4j.Logger;
@@ -17,11 +18,11 @@ public class TangoProducer extends DefaultProducer {
     }
 
     public void process(Exchange exchange) throws Exception {
-        DevicePipe body = exchange.getIn().getBody(DevicePipe.class);
+        PipeBlob body = exchange.getIn().getBody(PipeBlob.class);
 
         //TODO transform body
 
-        getEndpoint().getProxy().toDeviceProxy().writePipe(body);
+        getEndpoint().getProxy().toDeviceProxy().writePipe(getEndpoint().getPipe(), body);
     }
 
 

@@ -23,7 +23,7 @@ public class TangoPollConsumer extends ScheduledPollConsumer {
         Exchange exchange = getEndpoint().createExchange();
 
 
-        Object message = getEndpoint().getProxy().toDeviceProxy().readPipe(getEndpoint().getPipe());
+        Object message = getEndpoint().getProxy().toDeviceProxy().readPipe(getEndpoint().getPipe()).getPipeBlob();
 
         //TODO transform body
 

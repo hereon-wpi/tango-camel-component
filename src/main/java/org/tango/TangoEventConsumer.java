@@ -2,6 +2,7 @@ package org.tango;
 
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoApi.DevicePipe;
+import fr.esrf.TangoApi.PipeBlob;
 import fr.esrf.TangoApi.events.ITangoPipeListener;
 import fr.esrf.TangoApi.events.TangoPipeEvent;
 import org.apache.camel.Exchange;
@@ -31,10 +32,10 @@ public class TangoEventConsumer extends DefaultConsumer {
         listener = new ITangoPipeListener() {
             @Override
             public void pipe(TangoPipeEvent event) {
-                DevicePipe value = null;
+                PipeBlob value = null;
                 Exchange exchange = getEndpoint().createExchange();
                 try {
-                    value = event.getValue();
+                    value = event.getValue().getPipeBlob();
                     exchange.getIn().setBody(value);
                 } catch (DevFailed e) {
                     Exception e0 = TangoUtils.convertDevFailedToException(e);
