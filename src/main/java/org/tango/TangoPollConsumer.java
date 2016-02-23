@@ -1,8 +1,10 @@
 package org.tango;
 
+import fr.esrf.Tango.DevFailed;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.ScheduledPollConsumer;
+import org.tango.client.ez.util.TangoUtils;
 
 /**
  * The Tango consumer.
@@ -34,9 +36,12 @@ public class TangoPollConsumer extends ScheduledPollConsumer {
             getProcessor().process(exchange);
             return 1; // number of messages polled
         } finally {
-            // log exception if an exception occurred and was not handled
-            if (exchange.getException() != null) {
-                getExceptionHandler().handleException("Error processing exchange", exchange, exchange.getException());
+            // log exception if a/n exception occurred and was not handled
+            Exception exception = exchange.getException();
+            if (exception != null) {
+                if(exception.getClass().isAssignableFrom(DevFailed.class))
+                     exception = TangoUtils.convertDevFailedToException((DevFailed) exception);
+                getExceptionHandler().handleException("Error processing exchange", exchange, exception);
             }
         }
     }
