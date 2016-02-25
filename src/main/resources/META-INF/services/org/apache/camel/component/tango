@@ -1,1 +1,1 @@
-class=org.tango.TangoComponent
+class=org.tango.camel.component.TangoComponent

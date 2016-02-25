@@ -1,13 +1,13 @@
-package org.tango;
+package org.tango.camel.component;
 
 import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoApi.DevicePipe;
 import fr.esrf.TangoApi.PipeBlob;
 import fr.esrf.TangoApi.events.ITangoPipeListener;
 import fr.esrf.TangoApi.events.TangoPipeEvent;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.DefaultConsumer;
+import org.tango.client.ez.proxy.TangoProxy;
 import org.tango.client.ez.util.TangoUtils;
 
 /**
@@ -27,6 +27,11 @@ public class TangoEventConsumer extends DefaultConsumer {
         return (TangoEndpoint) super.getEndpoint();
     }
 
+    /**
+     * Subscribes to pipe event
+     *
+     * @throws Exception
+     */
     @Override
     protected void doStart() throws Exception {
         listener = new ITangoPipeListener() {
@@ -56,7 +61,10 @@ public class TangoEventConsumer extends DefaultConsumer {
                 }
             }
         };
-        getEndpoint().getProxy().toTangoEventsAdapter().addTangoPipeListener(listener, getEndpoint().getPipe(), true);
+        TangoProxy proxy = getEndpoint().getProxy();
+        String pipeName = getEndpoint().getPipe();
+        log.debug("Subscribing to pipe={}/{}", proxy.getName(), pipeName);
+        proxy.toTangoEventsAdapter().addTangoPipeListener(listener, pipeName, true);
     }
 
     @Override

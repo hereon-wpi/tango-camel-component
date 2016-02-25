@@ -1,4 +1,4 @@
-package org.tango;
+package org.tango.camel.component;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;

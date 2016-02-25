@@ -1,4 +1,4 @@
-package org.tango;
+package org.tango.camel.component;
 
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
@@ -21,6 +21,8 @@ public class TangoEndpoint extends DefaultEndpoint {
     private String pipe;
     @UriParam
     private boolean poll = false;
+    @UriParam
+    private boolean once = false;
 
     private final TangoProxy proxy;
 
@@ -36,6 +38,8 @@ public class TangoEndpoint extends DefaultEndpoint {
     public Consumer createConsumer(Processor processor) throws Exception {
         if(poll)
             return new TangoPollConsumer(this, processor);
+        else if(once)
+            return new TangoPipeConsumer(this, processor);
         else
             return new TangoEventConsumer(this, processor);
     }
@@ -85,5 +89,18 @@ public class TangoEndpoint extends DefaultEndpoint {
      */
     public void setPoll(boolean isPoll) {
         this.poll = isPoll;
+    }
+
+    public boolean isOnce() {
+        return once;
+    }
+
+    /**
+     * If set to true. This end point will read corresponding pipe once during its lifetime
+     *
+     * @param once
+     */
+    public void setOnce(boolean once) {
+        this.once = once;
     }
 }

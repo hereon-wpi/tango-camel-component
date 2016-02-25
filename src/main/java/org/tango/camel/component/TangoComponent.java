@@ -1,4 +1,4 @@
-package org.tango;
+package org.tango.camel.component;
 
 import java.util.Map;
 

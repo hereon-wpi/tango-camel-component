@@ -1,9 +1,10 @@
-package org.tango;
+package org.tango.camel.component;
 
 import fr.esrf.Tango.DevFailed;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.ScheduledPollConsumer;
+import org.tango.client.ez.proxy.TangoProxy;
 import org.tango.client.ez.util.TangoUtils;
 
 /**
@@ -21,11 +22,12 @@ public class TangoPollConsumer extends ScheduledPollConsumer {
 
     @Override
     protected int poll() throws Exception {
-
+        TangoProxy proxy = getEndpoint().getProxy();
+        String pipeName = getEndpoint().getPipe();
+        log.debug("Polling pipe={}/{}",proxy.getName(),pipeName);
         Exchange exchange = getEndpoint().createExchange();
 
-
-        Object message = getEndpoint().getProxy().toDeviceProxy().readPipe(getEndpoint().getPipe()).getPipeBlob();
+        Object message = proxy.toDeviceProxy().readPipe(pipeName).getPipeBlob();
 
         //TODO transform body
 

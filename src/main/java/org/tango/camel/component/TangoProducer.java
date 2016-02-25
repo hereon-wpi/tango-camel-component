@@ -1,12 +1,12 @@
-package org.tango;
+package org.tango.camel.component;
 
 import fr.esrf.Tango.DevFailed;
-import fr.esrf.TangoApi.DevicePipe;
 import fr.esrf.TangoApi.PipeBlob;
 import org.apache.camel.Exchange;
 import org.apache.camel.impl.DefaultProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tango.client.ez.proxy.TangoProxy;
 import org.tango.client.ez.util.TangoUtils;
 
 /**
@@ -25,7 +25,10 @@ public class TangoProducer extends DefaultProducer {
         //TODO transform body
 
         try {
-            getEndpoint().getProxy().toDeviceProxy().writePipe(getEndpoint().getPipe(), body);
+            TangoProxy proxy = getEndpoint().getProxy();
+            String pipeName = getEndpoint().getPipe();
+            log.debug("Writing to pipe={}/{}",proxy.getName(),pipeName);
+            proxy.toDeviceProxy().writePipe(pipeName, body);
         } catch (DevFailed devFailed) {
             throw TangoUtils.convertDevFailedToException(devFailed);
         }
