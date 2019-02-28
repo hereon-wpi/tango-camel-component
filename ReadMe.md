@@ -1,5 +1,5 @@
-# Camel Component Project
-=======================
+# Tango Camel Component Project
+
 
 This project is a template of a Camel component.
 
