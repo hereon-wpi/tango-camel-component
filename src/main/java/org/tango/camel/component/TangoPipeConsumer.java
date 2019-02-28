@@ -3,11 +3,11 @@ package org.tango.camel.component;
 import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoApi.DevicePipe;
 import fr.esrf.TangoApi.PipeBlob;
+import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.DefaultConsumer;
-import org.tango.client.ez.proxy.TangoProxy;
-import org.tango.client.ez.util.TangoUtils;
+import org.tango.utils.DevFailedUtils;
 
 /**
  * @author Igor Khokhriakov <igor.khokhriakov@hzg.de>
@@ -26,12 +26,13 @@ public class TangoPipeConsumer extends DefaultConsumer {
     protected void doStart() throws Exception {
         DevicePipe pipe = null;
         String pipeName = getEndpoint().getPipe();
-        TangoProxy proxy = getEndpoint().getProxy();
+        TangoDevice device = getEndpoint().getProxy();
         try {
-            log.debug("Reading pipe={}/{}",proxy.getName(),pipeName);
-            pipe = proxy.toDeviceProxy().readPipe(pipeName);
+            log.debug("Reading pipe={}/{}",device.getDeviceProxy().get_name(),pipeName);
+            pipe = device.getDeviceProxy().readPipe(pipeName);
         } catch (DevFailed devFailed) {
-            throw TangoUtils.convertDevFailedToException(devFailed);
+            DevFailedUtils.logDevFailed(devFailed, log);
+            throw devFailed;
         }
 
         PipeBlob value = null;

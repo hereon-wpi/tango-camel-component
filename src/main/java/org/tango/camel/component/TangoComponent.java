@@ -2,12 +2,12 @@ package org.tango.camel.component;
 
 import java.util.Map;
 
+import fr.esrf.TangoApi.DeviceProxyFactory;
+import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
 
 import org.apache.camel.impl.UriEndpointComponent;
-import org.tango.client.ez.proxy.TangoProxies;
-import org.tango.client.ez.proxy.TangoProxy;
 
 /**
  * Represents the component that manages {@link TangoEndpoint}.
@@ -23,8 +23,7 @@ public class TangoComponent extends UriEndpointComponent {
     }
 
     protected Endpoint createEndpoint(String uri, String remaining, Map<String, Object> parameters) throws Exception {
-        //TODO load from cache
-        TangoProxy proxy = TangoProxies.newDeviceProxyWrapper(remaining);
+        TangoDevice proxy = new TangoDevice(DeviceProxyFactory.get(remaining));
 
         Endpoint endpoint = new TangoEndpoint(uri, this, proxy);
         setProperties(endpoint, parameters);

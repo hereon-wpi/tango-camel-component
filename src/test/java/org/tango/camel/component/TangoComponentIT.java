@@ -6,7 +6,7 @@ import org.apache.camel.model.DataFormatDefinition;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
-public class TangoComponentTest extends CamelTestSupport {
+public class TangoComponentIT extends CamelTestSupport {
 
     @Test
     public void testTango() throws Exception {

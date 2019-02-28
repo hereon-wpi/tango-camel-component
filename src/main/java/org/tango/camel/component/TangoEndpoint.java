@@ -1,5 +1,6 @@
 package org.tango.camel.component;
 
+import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
@@ -8,7 +9,6 @@ import org.apache.camel.spi.Metadata;
 import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriParam;
 import org.apache.camel.spi.UriPath;
-import org.tango.client.ez.proxy.TangoProxy;
 
 /**
  * Represents a Tango endpoint.
@@ -24,9 +24,9 @@ public class TangoEndpoint extends DefaultEndpoint {
     @UriParam
     private boolean once = false;
 
-    private final TangoProxy proxy;
+    private final TangoDevice proxy;
 
-    public TangoEndpoint(String uri, TangoComponent component, TangoProxy proxy) {
+    public TangoEndpoint(String uri, TangoComponent component, TangoDevice proxy) {
         super(uri, component);
         this.proxy = proxy;
     }
@@ -61,7 +61,7 @@ public class TangoEndpoint extends DefaultEndpoint {
         return name;
     }
 
-    public TangoProxy getProxy() {
+    public TangoDevice getProxy() {
         return proxy;
     }
 

@@ -1,11 +1,11 @@
 package org.tango.camel.component;
 
 import fr.esrf.Tango.DevFailed;
+import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.impl.ScheduledPollConsumer;
-import org.tango.client.ez.proxy.TangoProxy;
-import org.tango.client.ez.util.TangoUtils;
+import org.tango.utils.DevFailedUtils;
 
 /**
  * The Tango consumer.
@@ -22,14 +22,12 @@ public class TangoPollConsumer extends ScheduledPollConsumer {
 
     @Override
     protected int poll() throws Exception {
-        TangoProxy proxy = getEndpoint().getProxy();
+        TangoDevice device = getEndpoint().getProxy();
         String pipeName = getEndpoint().getPipe();
-        log.debug("Polling pipe={}/{}",proxy.getName(),pipeName);
+        log.debug("Polling pipe={}/{}",device.getDeviceProxy().get_name(),pipeName);
         Exchange exchange = getEndpoint().createExchange();
 
-        Object message = proxy.toDeviceProxy().readPipe(pipeName).getPipeBlob();
-
-        //TODO transform body
+        Object message = device.getDeviceProxy().readPipe(pipeName).getPipeBlob();
 
         exchange.getIn().setBody(message);
 
@@ -42,8 +40,9 @@ public class TangoPollConsumer extends ScheduledPollConsumer {
             Exception exception = exchange.getException();
             if (exception != null) {
                 if(exception.getClass().isAssignableFrom(DevFailed.class))
-                     exception = TangoUtils.convertDevFailedToException((DevFailed) exception);
-                getExceptionHandler().handleException("Error processing exchange", exchange, exception);
+                    DevFailedUtils.logDevFailed((DevFailed) exception, log);
+                else
+                    getExceptionHandler().handleException("Error processing exchange", exchange, exception);
             }
         }
     }
