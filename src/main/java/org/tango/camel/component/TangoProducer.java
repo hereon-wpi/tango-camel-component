@@ -4,7 +4,7 @@ import fr.esrf.Tango.DevFailed;
 import fr.esrf.TangoApi.PipeBlob;
 import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Exchange;
-import org.apache.camel.impl.DefaultProducer;
+import org.apache.camel.support.DefaultProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tango.utils.DevFailedUtils;

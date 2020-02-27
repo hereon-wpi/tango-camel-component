@@ -2,6 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/relaase" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/relaase/target/checkout" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/release" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/release/target/checkout" vcs="Git" />
   </component>

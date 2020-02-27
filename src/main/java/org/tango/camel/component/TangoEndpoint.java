@@ -4,20 +4,22 @@ import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Consumer;
 import org.apache.camel.Processor;
 import org.apache.camel.Producer;
-import org.apache.camel.impl.DefaultEndpoint;
 import org.apache.camel.spi.Metadata;
 import org.apache.camel.spi.UriEndpoint;
 import org.apache.camel.spi.UriParam;
 import org.apache.camel.spi.UriPath;
+import org.apache.camel.support.DefaultEndpoint;
 
 /**
  * Represents a Tango endpoint.
  */
 @UriEndpoint(scheme = "tango", title = "Tango", syntax="tango:name?[attr|pipe]", consumerClass = TangoPollConsumer.class, label = "Tango")
 public class TangoEndpoint extends DefaultEndpoint {
-    @UriPath @Metadata(required = "true")
+    @UriPath
+    @Metadata(required = true)
     private String name;
-    @UriParam @Metadata(required = "true")
+    @UriParam
+    @Metadata(required = true)
     private String pipe;
     @UriParam
     private boolean poll = false;

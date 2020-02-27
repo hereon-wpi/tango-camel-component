@@ -6,7 +6,7 @@ import fr.esrf.TangoApi.PipeBlob;
 import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.impl.DefaultConsumer;
+import org.apache.camel.support.DefaultConsumer;
 import org.tango.utils.DevFailedUtils;
 
 /**

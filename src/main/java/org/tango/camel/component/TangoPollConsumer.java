@@ -4,7 +4,7 @@ import fr.esrf.Tango.DevFailed;
 import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.impl.ScheduledPollConsumer;
+import org.apache.camel.support.ScheduledPollConsumer;
 import org.tango.utils.DevFailedUtils;
 
 /**

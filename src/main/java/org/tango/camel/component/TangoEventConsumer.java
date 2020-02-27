@@ -8,7 +8,7 @@ import fr.esrf.TangoDs.TangoConst;
 import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.impl.DefaultConsumer;
+import org.apache.camel.support.DefaultConsumer;
 
 /**
  * @author Igor Khokhriakov <igor.khokhriakov@hzg.de>

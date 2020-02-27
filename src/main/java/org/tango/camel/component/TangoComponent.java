@@ -4,21 +4,17 @@ import fr.esrf.TangoApi.DeviceProxyFactory;
 import fr.soleil.tango.clientapi.TangoDevice;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Endpoint;
-import org.apache.camel.impl.UriEndpointComponent;
+import org.apache.camel.support.DefaultComponent;
 
 import java.util.Map;
 
 /**
  * Represents the component that manages {@link TangoEndpoint}.
  */
-public class TangoComponent extends UriEndpointComponent {
+public class TangoComponent extends DefaultComponent {
     
-    public TangoComponent() {
-        super(TangoEndpoint.class);
-    }
-
     public TangoComponent(CamelContext context) {
-        super(context, TangoEndpoint.class);
+        super(context);
     }
 
     protected Endpoint createEndpoint(String rawURI, String remaining, Map<String, Object> parameters) throws Exception {
