@@ -12,7 +12,10 @@ import java.util.Map;
  * Represents the component that manages {@link TangoEndpoint}.
  */
 public class TangoComponent extends DefaultComponent {
-    
+
+    public TangoComponent() {
+    }
+
     public TangoComponent(CamelContext context) {
         super(context);
     }
