@@ -1,8 +1,5 @@
 # Tango Camel Component Project
 
-[![Download](https://img.shields.io/github/release/hzg-wpi/tango-camel-component.svg?style=flat)](https://github.com/hzg-wpi/tango-camel-component/releases/latest)
-
-
 This project is a template of a Camel component.
 
 For more help see the Apache Camel documentation:
