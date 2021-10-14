@@ -10,11 +10,11 @@
 
     <name>Camel Tango Component</name>
     <description>Defines Tango Controls endpoint for Apache Camel</description>
-    <url>https://github.com/hzg-wpi/tango-camel-component</url>
+    <url>https://github.com/hereon-wpi/tango-camel-component</url>
 
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/hzg-wpi/tango-camel-component/issues</url>
+        <url>https://github.com/hereon-wpi/tango-camel-component/issues</url>
     </issueManagement>
 
 
@@ -43,16 +43,16 @@
     </properties>
 
     <scm>
-        <connection>scm:git:git@github.com:hzg-wpi/tango-${project.artifactId}.git</connection>
-        <developerConnection>scm:git:git@github.com:hzg-wpi/tango-${project.artifactId}.git</developerConnection>
-        <url>https://github.com/hzg-wpi/tango-${project.artifactId}</url>
+        <connection>scm:git:git@github.com:hereon-wpi/tango-${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com:hereon-wpi/tango-${project.artifactId}.git</developerConnection>
+        <url>https://github.com/hereon-wpi/tango-${project.artifactId}</url>
         <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
         <repository>
             <id>github-hzg</id>
-            <url>https://maven.pkg.github.com/hzg-wpi/tango-${project.artifactId}</url>
+            <url>https://maven.pkg.github.com/hereon-wpi/tango-${project.artifactId}</url>
         </repository>
     </distributionManagement>
 
