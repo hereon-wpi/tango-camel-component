@@ -73,7 +73,7 @@
         <dependency>
             <groupId>de.hereon.tango.lang</groupId>
             <artifactId>client</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.5</version>
         </dependency>
 
         <!-- Java11+ required dependencies -->
@@ -242,7 +242,7 @@
                 <enabled>false</enabled>
             </snapshots>
             <id>github-hzg</id>
-            <url>https://maven.pkg.github.com/hzg-wpi/*</url>
+            <url>https://maven.pkg.github.com/hereon-wpi/*</url>
         </repository>
     </repositories>
 
