@@ -6,7 +6,7 @@
     <groupId>de.hereon.tango</groupId>
     <artifactId>camel-component</artifactId>
     <packaging>bundle</packaging>
-    <version>2.3</version>
+    <version>2.4-SNAPSHOT</version>
 
     <name>Camel Tango Component</name>
     <description>Defines Tango Controls endpoint for Apache Camel</description>
@@ -46,7 +46,7 @@
         <connection>scm:git:git@github.com:hzg-wpi/tango-${project.artifactId}.git</connection>
         <developerConnection>scm:git:git@github.com:hzg-wpi/tango-${project.artifactId}.git</developerConnection>
         <url>https://github.com/hzg-wpi/tango-${project.artifactId}</url>
-        <tag>camel-component-2.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
